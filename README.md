@@ -132,5 +132,15 @@ homepage   3/3     3            3           15m
 see https://kubernetes.io/docs/concepts/workloads/controllers/job/#running-an-example-job
 `kubectl apply -f job-example/job.yaml`
 
+## Helm 
+https://artifacthub.io/
+
+### Helm Download Charts
+`helm dependency build`
 ### Build Helm Template
 `helm template . -f values.yaml`
+
+## CRD
+see: https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+
+

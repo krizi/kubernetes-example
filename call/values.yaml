@@ -1,0 +1,3 @@
+wget:
+  endpoint: "http://homepage-svc:8080/index.html"
+  agent: "MYCUSTOMAGENT"
