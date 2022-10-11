@@ -98,7 +98,7 @@ data:
     <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Kubernetes Nginx</title>
+       <title>Kubernetes Nginx</title>
     </head>
     <body>
     <h2>This is my high available Homepage</h2>
@@ -131,3 +131,6 @@ homepage   3/3     3            3           15m
 ### Execute Job
 see https://kubernetes.io/docs/concepts/workloads/controllers/job/#running-an-example-job
 `kubectl apply -f job-example/job.yaml`
+
+### Build Helm Template
+`helm template . -f values.yaml`

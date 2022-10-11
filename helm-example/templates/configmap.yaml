@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage-html
+  labels: {{ include "example.labels" . | nindent 4 }}
+data:
+{{ (.Files.Glob "html/*").AsConfig | indent 2 }}
