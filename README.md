@@ -1,3 +1,6 @@
+# Overview
+https://shipit.dev/posts/kubernetes-overview-diagrams.html
+
 # Run Cluster Locally
 ## Install minikube CLI
 https://minikube.sigs.k8s.io/docs/start/
@@ -142,5 +145,3 @@ https://artifacthub.io/
 
 ## CRD
 see: https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
-
-
