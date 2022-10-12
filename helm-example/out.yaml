@@ -1,0 +1,84 @@
+---
+# Source: helm-example/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage-html
+  labels: 
+    helm.sh/chart: helm-example
+    app.kubernetes.io/instance: homepage
+    app.kubernetes.io/managed-by: Helm
+data:
+  index.html: |-
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Kubernetes Nginx</title>
+    </head>
+    <body>
+    <h2>This is my high available Homepage</h2>
+    </body>
+    </html>
+  test.html: |-
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TEST PAGE</title>
+    </head>
+    <body>
+    <h2>This is the test page</h2>
+    </body>
+    </html>
+---
+# Source: helm-example/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: homepage-svc
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 80
+  selector: 
+    helm.sh/chart: helm-example
+    app.kubernetes.io/instance: homepage
+    app.kubernetes.io/managed-by: Helm
+---
+# Source: helm-example/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homepage
+  labels: 
+    helm.sh/chart: helm-example
+    app.kubernetes.io/instance: homepage
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 3
+  selector:
+    matchLabels: 
+      helm.sh/chart: helm-example
+      app.kubernetes.io/instance: homepage
+      app.kubernetes.io/managed-by: Helm
+  template:
+    metadata:
+      labels: 
+        helm.sh/chart: helm-example
+        app.kubernetes.io/instance: homepage
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      containers:
+        - name: homepage
+          image: nginx:1.23.1-alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: nginx-html
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: nginx-html
+          configMap:
+            name: homepage-html

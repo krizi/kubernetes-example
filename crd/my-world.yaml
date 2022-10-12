@@ -1,0 +1,7 @@
+apiVersion: stable.example.com/v1
+kind: Minecraft
+metadata:
+  name: my-world
+spec:
+  version: "1"
+  seed: "asdfasdfafasdf"

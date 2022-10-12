@@ -137,11 +137,17 @@ see https://kubernetes.io/docs/concepts/workloads/controllers/job/#running-an-ex
 
 ## Helm 
 https://artifacthub.io/
+https://github.com/helm/helm/releases
 
 ### Helm Download Charts
+`helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
 `helm dependency build`
 ### Build Helm Template
 `helm template . -f values.yaml`
 
 ## CRD
 see: https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+
+
+* kubectl scale deployment homepage --replicas 1
+* 
